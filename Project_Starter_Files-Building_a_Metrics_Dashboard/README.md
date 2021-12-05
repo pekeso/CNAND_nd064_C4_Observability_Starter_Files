@@ -4,17 +4,65 @@
 
 *TODO:* run `kubectl` command to show the running pods and services for all components. Take a screenshot of the output and include it here to verify the installation
 
+### Monitoring Pods and Services
+
+![monitoring pods](answer-img/monitoring_pods.png)
+![monitoring services](answer-img/monitoring_svc.png)
+
+### Observability Pod and Services
+
+![observability pod](answer-img/observability_pod.png)
+![observability services](answer-img/observability_svc.png)
+
+### App Pods and Services
+
+![app pods](answer-img/pods.png)
+![app services](answer-img/svc.png)
+
+
 ## Setup the Jaeger and Prometheus source
 *TODO:* Expose Grafana to the internet and then setup Prometheus as a data source. Provide a screenshot of the home page after logging into Grafana.
+
+![Grafana home page](answer-img/grafana_home.png)
 
 ## Create a Basic Dashboard
 *TODO:* Create a dashboard in Grafana that shows Prometheus as a source. Take a screenshot and include it here.
 
+![Dashboard with Prometheus source](answer-img/prometheus_data_source.jpg)
+
 ## Describe SLO/SLI
 *TODO:* Describe, in your own words, what the SLIs are, based on an SLO of *monthly uptime* and *request response time*.
 
+SLIs are the specific measurements of the uptime over a month and the time a request takes to complete. The SLO of monthly uptime and request response time is the desired achieved goal.
+
+For example, we have the following SLO:
+
+*The application will have a montly uptime of 99.9% and a request response time of 100ms*
+
+After effective measurements over a month, the SLIs can be:
+
+*Monthly uptime = 97.9%*
+
+*Average request response time = 103ms*
+
 ## Creating SLI metrics.
 *TODO:* It is important to know why we want to measure certain metrics for our customer. Describe in detail 5 metrics to measure these SLIs. 
+
+1. ### Availability
+It's a measurement of the service availability over a certain period of time. It measures the proportion of requests that resulted in a successful response.
+
+2. ### Latency
+In order to know how well our app is performing we need to measure the actual time that a request will take to complete. In this case we also measure the proportion of requests that were faster than some threshold.
+
+3. ### Durability
+For example in a storage service, we can measure the proportion of written records that can be successfully read.
+
+4. ### Correctness
+In a pipeline service, the proportion of records coming into the pipeline that resulted in the correct value coming out.
+
+5. ### Throughput
+We measure the number of requests that can be handled over a period of time.
+
 
 ## Create a Dashboard to measure our SLIs
 *TODO:* Create a dashboard to measure the uptime of the frontend and backend services We will also want to measure to measure 40x and 50x errors. Create a dashboard that show these values over a 24 hour period and take a screenshot.
