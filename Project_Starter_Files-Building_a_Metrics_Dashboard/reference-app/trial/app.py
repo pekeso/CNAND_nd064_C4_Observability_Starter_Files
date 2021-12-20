@@ -42,7 +42,7 @@ def init_tracer(service):
     return config.initialize_tracer()
 
 
-tracer = init_tracer("trial")
+tracer = init_tracer("trial-service")
 flask_tracer = FlaskTracing(tracer, True, app)
 
 
@@ -87,7 +87,6 @@ def trace():
                     site_span.set_tag("company-site", result["company"])
 
     return jsonify(jobs_info)
-
 
 if __name__ == "__main__":
     app.run(debug=True,)
