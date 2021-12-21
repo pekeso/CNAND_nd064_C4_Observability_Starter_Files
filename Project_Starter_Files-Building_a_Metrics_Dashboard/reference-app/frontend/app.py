@@ -31,13 +31,15 @@ def init_tracer(service):
     return config.initialize_tracer()
 
 
-tracer = init_tracer("frontend-service")
+tracer = init_tracer("frontend")
 flask_tracer = FlaskTracing(tracer, True, app)
 
 
 @app.route("/")
 def homepage():
     return render_template("main.html")
+
+
 
 
 if __name__ == "__main__":

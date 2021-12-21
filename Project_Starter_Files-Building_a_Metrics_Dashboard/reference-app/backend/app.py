@@ -41,7 +41,7 @@ def init_tracer(service):
     return config.initialize_tracer()
 
 
-tracer = init_tracer("backend-service")
+tracer = init_tracer("backend")
 flask_tracer = FlaskTracing(tracer, True, app)
 
 @app.route("/")
