@@ -31,6 +31,11 @@ spec:
         - name: backendport
           containerPort: 8080
           protocol: TCP
+        # resources:
+        #   requests:
+        #     memory: "512Mi"
+        #   limits:
+        #     memory: "1Gi"
       
 ---
 apiVersion: v1

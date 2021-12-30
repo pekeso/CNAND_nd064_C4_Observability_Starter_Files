@@ -73,5 +73,10 @@ def add_star():
         return jsonify({"result": output})
 
 
+@app.route('/error')
+def internal_error():
+    return 'Oops!!! Internal server error! :(', 500
+
+
 if __name__ == "__main__":
     app.run()
