@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+import requests
 
 import pymongo
 from flask_pymongo import PyMongo
@@ -62,7 +63,7 @@ def my_api():
 
 @app.route("/star", methods=["POST"])
 def add_star():
-    with tracer.start_span("star-route") as span:
+    with tracer.start_span("star-route") as span:        
         star = mongo.db.stars
         name = request.json["name"]
         distance = request.json["distance"]
@@ -76,6 +77,14 @@ def add_star():
 @app.route('/error')
 def internal_error():
     return 'Oops!!! Internal server error! :(', 500
+
+@app.route('/notfound')
+def not_found_error():
+    with tracer.start_span("api-route") as span:
+        res = requests.get("http://localhost:8081/alpha")
+        span.set_tag("http.status_code", res.status_code)
+        span.set_tag("response", "not-found")
+        return render_template("alpha.html")
 
 
 if __name__ == "__main__":
